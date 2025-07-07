@@ -37,7 +37,7 @@ DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://Priyanshu1057:IdBunts1r9K
 DB_NAME = os.environ.get("DATABASE_NAME", "Cluster0")
 
 #Time in seconds for message delete, put 0 to never delete
-TIME = int(os.environ.get("TIME", "10"))
+TIME = int(os.environ.get("TIME", "600"))
 
 
 #force sub channel id, if you want enable force sub
@@ -60,7 +60,7 @@ TOKEN = True if os.environ.get('TOKEN', "True") == "True" else False  #For Enabl
 
 SHORTLINK_URL = os.environ.get("SHORTLINK_URL", "gplinks.com")
 SHORTLINK_API = os.environ.get("SHORTLINK_API", "6039024d791b89459bb4667a367c4a2d5a511739")
-VERIFY_EXPIRE = int(os.environ.get('VERIFY_EXPIRE', 600)) # Add time in seconds
+VERIFY_EXPIRE = int(os.environ.get('VERIFY_EXPIRE', 21600)) # Add time in seconds
 IS_VERIFY = os.environ.get("IS_VERIFY", "True")
 TUT_VID = os.environ.get("TUT_VID","https://t.me/hwdownload/3")
 
