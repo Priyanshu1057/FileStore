@@ -22,7 +22,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated, UserNotParticipant
 from bot import Bot
-from config import *
+from config import JOIN_REQUEST_ENABLE,FORCE_SUB_CHANNEL
 from helper_func import *
 from database.database import *
 
