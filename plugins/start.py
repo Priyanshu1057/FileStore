@@ -47,6 +47,15 @@ async def start_command(client: Client, message: Message):
         #await temp.delete()
         return await not_joined(client, message)
 
+    if bool(JOIN_REQUEST_ENABLE):
+        invite = await client.create_chat_invite_link(
+            chat_id=FORCE_SUB_CHANNEL,
+            creates_join_request=True
+        )
+        ButtonUrl = invite.invite_link
+    else:
+        ButtonUrl = client.invitelink
+
     # File auto-delete time in seconds (Set your desired time in seconds here)
     FILE_AUTO_DELETE = await db.get_del_timer()  # Example: 3600 seconds (1 hour)
 
@@ -238,6 +247,19 @@ async def not_joined(client: Client, message: Message):
                     buttons.append([InlineKeyboardButton(text=name, url=link)])
                     count += 1
                     await temp.edit(f"<b>{'! ' * count}</b>")
+
+            if bool(JOIN_REQUEST_ENABLE):
+        invite = await client.create_chat_invite_link(
+            chat_id=FORCE_SUB_CHANNEL,
+            creates_join_request=True
+        )
+        ButtonUrl = invite.invite_link
+    else:
+        ButtonUrl = client.invitelink
+
+
+
+                
 
                 except Exception as e:
                     print(f"Error with chat {chat_id}: {e}")
