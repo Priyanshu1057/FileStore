@@ -22,7 +22,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated, UserNotParticipant
 from bot import Bot
-from config import JOIN_REQUEST_ENABLE,FORCE_SUB_CHANNEL
+from config import *
 from helper_func import *
 from database.database import *
 
@@ -46,15 +46,6 @@ async def start_command(client: Client, message: Message):
     if not await is_subscribed(client, user_id):
         #await temp.delete()
         return await not_joined(client, message)
-
-    if bool(JOIN_REQUEST_ENABLE):
-        invite = await client.create_chat_invite_link(
-            chat_id=FORCE_SUB_CHANNEL,
-            creates_join_request=True
-        )
-        ButtonUrl = invite.invite_link
-    else:
-        ButtonUrl = client.invitelink
 
     # File auto-delete time in seconds (Set your desired time in seconds here)
     FILE_AUTO_DELETE = await db.get_del_timer()  # Example: 3600 seconds (1 hour)
@@ -248,20 +239,7 @@ async def not_joined(client: Client, message: Message):
                     count += 1
                     await temp.edit(f"<b>{'! ' * count}</b>")
 
-            if bool(JOIN_REQUEST_ENABLE):
-        invite = await client.create_chat_invite_link(
-            chat_id=FORCE_SUB_CHANNEL,
-            creates_join_request=True
-        )
-        ButtonUrl = invite.invite_link
-    else:
-        ButtonUrl = client.invitelink
-
-
-
-                
-
-                except Exception as e:
+             except Exception as e:
                     print(f"Error with chat {chat_id}: {e}")
                     return await temp.edit(
                         f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @rohit_1888</i></b>\n"
